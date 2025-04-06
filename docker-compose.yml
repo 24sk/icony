@@ -1,0 +1,31 @@
+services:
+  frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: icony-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+      - /app/.nuxt
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - HOST=${HOST}
+    depends_on:
+      - minio
+  minio:
+    image: minio/minio
+    container_name: icony-minio
+    ports:
+      - "9000:9000" # S3互換API
+      - "9001:9001" # ✅ GUIアクセス用
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio-data:/data
+volumes:
+  minio-data:
