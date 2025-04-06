@@ -1,0 +1,5 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": ["icony", "Nuxt", "Fargate", "Minio", "S3", "S3Mock", "minioadmin"]
+}
