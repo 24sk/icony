@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     s3BucketName: process.env.S3_BUCKET_NAME,
     awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID,
     awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    openaiApiKey: process.env.OPENAI_API_KEY,
 
     // クライアントでも使いたい値（例：S3表示URLなど）は public に書く
     public: {
